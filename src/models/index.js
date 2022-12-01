@@ -9,37 +9,39 @@ const foodSchema = require('./food.schema.js');
 // 'postgres://username:password@localhost:5432/rest-api-app'  <-- if you have a username and password
 // use ternary operator to setup sqlite for testing
 const DATABASE_URL = process.env.NODE_ENV === 'test'
-  ? 'sqlite::memory:'
+  ? 'sqlite:memory'
   : process.env.DATABASE_URL;
 
 console.log(DATABASE_URL);
 
 // Instantiate a new Sequelize instance - this is the connection to the database
-let sequelizeDatabase;
-if (process.env.NODE_ENV === 'test') {
-  sequelizeDatabase = new Sequelize({
-    dialect: 'sqlite',
-    database: ':memory',
-  });
-} else {
-  sequelizeDatabase = new Sequelize(process.env.DATABASE_URL, {
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
-  });
-}
-
-// const sequelizeDatabase = new Sequelize(DATABASE_URL, {
-//   dialectOptions: {
-//     ssl: {
-//       require: true,
-//       rejectUnauthorized: false,
+// let sequelizeDatabase;
+// if (process.env.NODE_ENV === 'test') {
+//   sequelizeDatabase = new Sequelize({
+//     dialect: 'sqlite',
+//     database: ':memory',
+//   });
+// } else {
+//   sequelizeDatabase = new Sequelize(process.env.DATABASE_URL, {
+//     dialectOptions: {
+//       ssl: {
+//         require: true,
+//         rejectUnauthorized: false,
+//       },
 //     },
-//   },
-// });
+//   });
+// }
+
+// const sequelizeDatabase = new Sequelize(DATABASE_URL);
+
+const sequelizeDatabase = new Sequelize(DATABASE_URL, {
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+});
 
 // Create a new model for the clothes and food table with the schema defined in the schema files
 const ClothesModel = clothesSchema(sequelizeDatabase, DataTypes);
