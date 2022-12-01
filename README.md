@@ -1,6 +1,6 @@
 # LAB - Class 03
 
-## Project: Express REST API & TDD
+## Project: Express REST API with TDD
 
 ### Author: Dustin Apodaca
 
@@ -10,9 +10,9 @@
 
 ### Links and Resources
 
-- [CI/CD](https://github.com/dustinapodaca/basic-express-server/actions) (GitHub Actions)
-- [Prod Deployment](https://basic-express-server-prod.onrender.com)
-- [Dev Deployment](https://basic-express-server-4wjg.onrender.com)
+- [CI/CD](https://github.com/dustinapodaca/basic-api-server/actions) (GitHub Actions)
+- [Prod Deployment](https://basic-api-server-prod.onrender.com)
+- [Dev Deployment](https://basic-api-server-dev.onrender.com)
 
 ### Setup
 
